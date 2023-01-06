@@ -48,13 +48,13 @@
         <a class="link-secondary" href="#">Subscribe</a>
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">Big JavaScript Energy</a>
+        <a class="blog-header-logo text-dark" id="title" href="#">Big JavaScript Energy</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="link-secondary" href="#" aria-label="Search">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
         </a>
-        <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+        <a class="btn btn-sm btn-outline-secondary" href="#" id="sign-up-btn">Sign up</a>
       </div>
     </div>
   </header>
@@ -393,10 +393,26 @@
     
   </body>
   <script>
-    let staging = false;
+    function getRandomHex() {
+      return "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
+    }
+
+    const title = document.querySelector('#title');
+    const signUpBtn = document.querySelector('#sign-up-btn');
+
+    signUpBtn.addEventListener('click', () => {
+      console.log('Clicked me!');
+    });
 
     document.addEventListener("DOMContentLoaded", function () {
       console.log('Hali!')
+      setInterval(() => {
+        let randomColor = getRandomHex();
+        title.style.setProperty('color', randomColor, 'important');
+      }, 3000);
+      setTimeout(() => {
+        console.log('Szia uram!')
+      }, 3000)
     });
   </script>
 </html>
